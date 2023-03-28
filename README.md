@@ -399,7 +399,7 @@ import datetime
 day = datetime.date(2005,5,11)
 print(day)
 ```
-### 결과 값
+datetime.date는 년, 월, 일로 날짜를 표현할 때 사용하는 함수이다.
 ## time
 ```python
 import time
@@ -412,16 +412,29 @@ for i in range(10):
     print(i)
     time.sleep(0.01)
 ```
+time.time()은 현재 시간을 1970년 기준으로 지난 시간을 초 단위로 돌려준다.
+
+time.localtime은 time.time()이 받은 실수 값을 사용해서 년, 월, 일, 시, 분, 초의 형태로 바꾸어 주는 함수이다.
+
+time.localtime에 받은 값을 튜플로 보기 쉬운 형태로 나타낸다.
+
+time.ctime은 현재 시간을 나타낸다.
+
+strftime은 시간 함수의 포멧코드를 제공한다.
+
+time.sleep은 일정한 시간 간격을 두고 루프를 실해한다.
 ## math.gcd
 ```python
 import math
 print(math.gcd(60,80,100))
 ```
+math.gcd 함수를 이용하면 최대공약수를 구하기 쉽다.
 ## math.lcm
 ```python
 import math
 print(math.lcm(15, 25))
 ```
+math.lcm 함수를 이용하면 최소공배수를 구하기 쉽다
 ## random
 ```python
 import random
@@ -431,6 +444,16 @@ a = [1,2,3,4,5]
 print(random.choice(a))
 print(random.sample(a,3))
 ```
+random은 난수를 발생시킨다.
+
+random.random()은 0.0부터 1.0 사이의 실수 중에서 난수 값을 나타낸다.
+
+random.randint는 정수 중에서 난수 값을 나타낸다.
+
+random.choice는 입력받은 리스트에서 무작위로 하나의 값을 나타낸다
+
+random.sample은 입력받은 리스트에서 무작위로 정한 개수만큼에 값 나타낸다
+
 ## itertools.zip_longest
 ```python
 import itertools
@@ -439,16 +462,20 @@ b = ['s','b','b']
 c = itertools.zip_longest(a,b,fillvalue='j')
 print(list(c))
 ```
+itertools.zip_longest는 같은 개수 자료형을 묶고, 전달한 반복 가능 객체의 길이가 다르면 긴 것을 기준으로 빠진 값은 fillvalue로 채울 수 있다.
 ## itertools.permutation
 ```python
 import itertools
 print(list(itertools.permutations(['1', '2', '3'],2)))
 ```
+itertools.permutations는 반복 가능 객체 중에서 선택한 순열을 이터레이터로 나타낸다.
+###### ※ 이터레이서는 자바의 컬렉션(Collection)에 저장되어 있는 요소들을 순회하는 인터페이스
 ## itertools.combination
 ```python
 import itertools
 print(len(list(itertools.combinations(range(1, 46), 6))))
 ```
+itertools.combinations는 반복 가능 객체 중에서 선택한 조합을 이터레이터로 나타낸다.
 ## functools.reduce
 ```python
 import functools
@@ -456,6 +483,7 @@ data = [1, 2, 3, 4, 5]
 result = functools.reduce(lambda x, y: x + y, data)
 print(result)
 ```
+functools.reduce는 함수를 반복 가능한 객체의 요소에 차례대로 누적 적용하여 객체를 하나의 값으로 줄인다.
 ## operator.itemgetter
 ```python
 from operator import itemgetter
@@ -467,17 +495,20 @@ a = [
 result = sorted(a,key=itemgetter(1))
 print(result)
 ```
+operator.itemgetter는 주로 sorted와 같은 함수의 key 매개변수에 적용하여 다양한 기준으로 정렬하는 할 수 있도록 도와준다.
 ## shutil
 ```python
 import shutil
 shutil.copy("c:/test/파일.txt", "c:/doit/새파일.txt")
 shutil.move("c:/test/파일.txt", "c:/doit/새파일.txt")
 ```
+shutil은 파일을 복사 하거나 이동할 때 사용한다.
 ## glob
 ```python
 import glob
 print(glob.glob("c:/doit/s*"))
 ```
+glob은 디렉터리에 있는 파일을 리스트로 만든다
 ## pickle
 ```python
 import pickle
@@ -490,6 +521,11 @@ f = open("파일.txt", 'rb')
 data = pickle.load(f)
 print(data)
 ```
+pickle은 객체의 형태를 그대로 유지하면서 파일에 저장하고 불러올 수 있게 한다.
+
+pickle.dump는 딕셔너리 객체를 그대로 차일에 저장한다.
+
+pickle.load는 원래있던 딕셔너리 객체 상태 그대로 불러온다.
 ## os
 ```python
 import os
@@ -499,6 +535,17 @@ os.getcwd()
 os.system("dir")
 os.popen("dir")
 ```
+os는 환경 변수나 디렉터리, 파일 등의 OS 자원을 제어할 수 있게 해준다.
+
+내 시스템의 환경 변수값을 알고 싶을 때 - os.environ
+
+디렉터리 위치 변경하기 - os.chdir
+
+디렉터리 위치 돌려받기 - os.getcwd
+
+시스템 명령어 호출하기 - os.system
+
+실행한 시스템 명령어의 결과값 돌려받기 - os.popen
 ## zipfile
 ```python
 import zipfile
@@ -513,6 +560,29 @@ with zipfile.ZipFile('mytext.zip') as myzip:
 with zipfile.ZipFile('mytext.zip') as myzip:
     myzip.extract('a.txt')
 ```
+zipfile은 여러 개의 파일을 zip 형식으로 합치거나 이를 해제할 때 사용한다.
+
+myzip.write는 파일을 합친다.
+
+myzip.extractall는 모든 파일을 해체한다.
+
+myzip.extract는 특정 파일을 해체한다.
+
+파일을 묶을 때는 compression, compresslevel을 사용한다.
+
+compression에는 4가지 종류가 있다.
+
+ZIP_STORED - 압축하지 않고 파일을 Zip으로만 묶는다. 속도가 빠르다.
+
+ZIP_DEFLATED - 일반적인 ZIP 압축으로 속도가 빠르고 압축률은 낮다.
+
+ZIP_BZIP2 - bzip2 압축으로 압축률이 높고 속도가 느리다.
+
+ZIP_LZMA - lzma 압축으로 압축률이 높고 속도가 느리다.
+
+compressionlevel은 압축 수준을 의미하는 숫자값으로 1 ~ 9를 사용한다.
+
+1은 속도가 가장 빠르고 압축률이 낮고, 9는 속도는 가장 느리지만 최대 압축을 한다.
 ## threading
 threading.Thread를 사용하여 만든 스레드 객체가 동시 작업을 가능하게 한다.
 ## tempfile
@@ -533,4 +603,70 @@ urllib은 URL을 읽고 분석할 때 사용함
 
 ## webbrowser
 webbrowser는 파이썬 프로그램에서 시스템 브라우저를 호출할 때 사용함
+# 외부 라이브러리
+## pip
+pip은 파이썬 모듈이나 패키지를 쉽게 설치할 수 있도록 도와주는 도구이다.
+### pip install
+```
+pip install SomePackage 
+```
+SomePackage는 설치받을 수 있는 특정 패키지다.
+### pip uninstall
+```
+pip uninstall SomePackage
+```
+설치한 패키지를 삭제한다.
+### 특정 버전으로 설치하기
+```
+pip install SomePackage==1.0.4
+pip install SomePackage 
+```
+1.0.4버전의 SomePackage를 설치한다.
+### 최신 버전으로 업그레이드하기
+```
+pip install --upgrade SomePackage 
+```
+--upgrade를 사용하여 최신버전으로 업그레이드 할 수 있다.
+```
+### 설치된 패키지 확인하기
+```
+pip list
+```
+설치한 패키지 목록을 출력한다.
+## faker
+faker는 테스트용 가짜 데이터를 생성할 때 사용한다.
+### faker 사용해보기
+```
+from faker import Faker
+fake = Faker('ko-KR')
+fake.name()
+```
+한글이름을 출력하기 위해 한국을 의미하는 ko-KR을 전달하여 faker를 사용한다.
+### faker 활용
+![image](https://user-images.githubusercontent.com/104752580/228147995-572a7141-7d16-4e7a-8ff0-23d9f1690b0e.png)
+## sympy
+sympy는 방정식 기호를 사용하게 해주는 외부 라이브러리이다.
+### sympy 사용해보기
+```
+from fractions import Fraction
+import sympy
 
+x = sympy.symbols("x")
+
+f = sympy.Eq(x*Fraction('2/4'),100)
+
+result = sympy.solve(f)
+print(result)
+# 200
+```
+x의 2/4가 100이면 100*2의 값이 x의 값이 된다.
+###### ※ Fraction은 유리수를 표현할 때 사용
+### sympy 활용
+#### x ** 2 = 1 식의 해 구하기
+```
+import sympy
+x = sympy.symbols("x")
+f = sympy.Eq(x**2, 1)
+sympy.solve(f)
+```
+x의 값의 2제곱이 1이면 x는 -1,1이 나온다. 
