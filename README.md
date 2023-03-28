@@ -627,7 +627,7 @@ pip install SomePackage
 pip install --upgrade SomePackage 
 ```
 --upgrade를 사용하여 최신버전으로 업그레이드 할 수 있다.
-```
+
 ### 설치된 패키지 확인하기
 ```
 pip list
@@ -668,5 +668,6 @@ import sympy
 x = sympy.symbols("x")
 f = sympy.Eq(x**2, 1)
 sympy.solve(f)
+
 ```
 x의 값의 2제곱이 1이면 x는 -1,1이 나온다. 
