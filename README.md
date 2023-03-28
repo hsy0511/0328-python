@@ -12,7 +12,7 @@ except ZeroDivisionError as e:
 ![image](https://user-images.githubusercontent.com/104752580/228095657-0a385848-1b08-478e-9b4b-14a4f30286f6.png)
 
 except문은 발생오류와 오류변수를 통해 오류내용을 알고싶을때 방법이다.
-####### ※ [] 기호를 사용하면 [] 안에있는 내용을 생략할 수 있다는 표기법이다.
+###### ※ [] 기호를 사용하면 [] 안에있는 내용을 생략할 수 있다는 표기법이다.
 ## try, finally문
 ```python
 try:
@@ -39,4 +39,4 @@ except (ZeroDivisionError, IndexError) as e:
 ![image](https://user-images.githubusercontent.com/104752580/228097272-af6b527b-93bc-4f89-a8f1-41bf958e23db.png)
 
 2개 이상의 오류를 처리할 때는 () 괄호안에 발생오류를 적은 후 사용한다.
-####### ※ 먼저 받은 오류만 출력되고 나머지 오류는 출력하지 않는다.
+###### ※ 먼저 받은 오류만 출력되고 나머지 오류는 출력하지 않는다.
